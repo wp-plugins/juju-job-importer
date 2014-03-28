@@ -3,9 +3,9 @@
 Plugin Name: Juju Job Importer
 Plugin URI: http://wordpress.org/plugins/juju-job-importer/
 Description: Juju Job Importer Plugin Import job from juju according to your given parameter.Post in relevant category,makes auto blogging
-Version: 1.0
+Version: 1.1
 Author: Shambhu Prasad Patnaik
-Author URI:http://aynsoft.com/
+Author URI:http://socialcms.wordpress.com/
 */
 set_time_limit(0);
 include_once('juju-job-importer-functions.php');
@@ -101,8 +101,11 @@ function juju_job_importer_list()
 		<ul class="juju_help_square">
 		 <li><a href="http://wordpress.org/plugins/indeed-job-importer/" target="_blank">Indeed Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/contact-us/" target="_blank">Pro Indeed Job Importer (premium version)</a></li>
+		 <li><a href="http://wordpress.org/plugins/beyond-job-importer/" target="_blank">Beyond Job Importer</a></li>
+		 <li><a href="http://socialcms.wordpress.com/2014/03/15/wp-job-manager-indeed-job-importer/" target="_blank">WP Job Manager Indeed Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/2014/01/21/careerbuilder-job-importer/" target="_blank">CareerBuilder Job Importer</a></li>
-		 <li><a href="http://socialcms.wordpress.com/contact-us/" target="_blank">CareerJet Job Importer</a></li>
+		 <li><a href="http://socialcms.wordpress.com/2014/02/07/careerjet-job-importer/" target="_blank">CareerJet Job Importer</a></li>
+		 <li><a href="http://socialcms.wordpress.com/2014/03/05/simplyhired-job-importer/" target="_blank">SimplyHired Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/category/job-board-2/" target="_blank">Job Board</a></li>
 		<ul>
 	</div>
@@ -124,11 +127,14 @@ endif;
 add_action('juju_job_importer_hook','juju_job_importer_checkhook');
 register_deactivation_hook(__FILE__, 'juju_job_importer_deactivate');
 register_activation_hook(__FILE__, 'juju_job_importer_activate');
+if (!function_exists('juju_job_importer_checkhook')):
 function juju_job_importer_checkhook()
 {
  $now=current_time('mysql');
  juju_job_importer_feed_import('',$now);
 }
+endif;
+if (!function_exists('juju_job_importer')):
 function juju_job_importer()
 {
  global $wpdb;
@@ -195,7 +201,7 @@ function juju_job_importer()
     $wp_category     = wp_filter_nohtml_kses($_POST['category']);
     $run_every       = wp_filter_nohtml_kses($_POST['IR_run_every']);
     $occurrence_type = wp_filter_nohtml_kses($_POST['occurrence_type']);
-    $display_template= wp_filter_nohtml_kses($_POST['display_template']);
+    $display_template= stripslashes_deep($_POST['display_template']);
     $error=false;			
     if($campaign_name=='')
     {
@@ -307,7 +313,7 @@ function juju_job_importer()
   $wp_category     = wp_filter_nohtml_kses($result->wp_category);
   $run_every       = wp_filter_nohtml_kses($result->occurrence);
   $occurrence_type = wp_filter_nohtml_kses($result->occurrence_type);
-  $display_template= stripslashes($result->template_format);
+  $display_template= stripslashes_deep($result->template_format);
  }
  elseif($error)
  {
@@ -411,6 +417,8 @@ function juju_job_importer()
       </table></div>';
 }
 }
+endif;
+if (!function_exists('juju_job_importer_activate')):
 function juju_job_importer_activate()
 {
  global $wpdb;
@@ -447,6 +455,8 @@ function juju_job_importer_activate()
  }
  wp_schedule_event( time(), 'hourly', "juju_job_importer_hook");
 }
+endif;
+if (!function_exists('juju_job_importer_deactivate')):
 function juju_job_importer_deactivate()
 {
   wp_clear_scheduled_hook("juju_job_importer_hook");	
@@ -455,21 +465,5 @@ function juju_job_importer_deactivate()
   $query='drop table '.$juju_job_importer_dbtable;
   $results = $wpdb->query($query);
 }
-
-if (!function_exists('juju_job_importer_deactivate')):
-function juju_job_importer_deactivate()
-{
- delete_option('juju_job_importer_form_option');
- delete_option('juju_job_importer_admin_setting');
- unregister_widget('Job_Board_Latest_Post_Widget');
-}
 endif;
-if (!function_exists('juju_job_importer_activate')):
-function juju_job_importer_activate()
-{
- juju_job_importer_form_setting_restore();
-}
-endif;
-register_deactivation_hook(__FILE__, 'juju_job_importer_deactivate');
-register_activation_hook(__FILE__, 'juju_job_importer_activate');
 ?>

@@ -4,7 +4,7 @@ Donate link: http://socialcms.wordpress.com/
 Tags: juju job importer,juju rss,import juju,juju,autoblogging,job board,auto job import,juju api,juju importer,job-search-engine,affiliate
 Requires at least: 2.9
 Tested up to: 3.8.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Juju Job Importer Plugin Import job from juju according to your given parameter.
 = Features =
 1. Import job from juju.
 2. Custom import according to your parameter.
-3. makes autoblogging.
+3. makes auto blogging.
 4. Support WPMU.
 5. Custom template option.
 6. Set cron option.
@@ -60,7 +60,11 @@ More detail : http://socialcms.wordpress.com/
 
 == Changelog ==
 
-N/A
+= 1.1 =
+* Add html tag support in Display Template
+
+= 1.0 =
+* Initial release
 
 == Upgrade Notice ==
 

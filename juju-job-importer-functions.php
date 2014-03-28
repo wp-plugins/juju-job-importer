@@ -184,7 +184,7 @@ function juju_job_importer_feed_import($feed_ids='',$current_time='')
   $occurrence       = wp_filter_nohtml_kses($row['occurrence']);
   $occurrence_type  = wp_filter_nohtml_kses($row['occurrence_type']);
   $publish_status   = wp_filter_nohtml_kses($row['publish_status']);
-  $display_template = stripslashes($row['template_format']);
+  $display_template = stripslashes_deep($row['template_format']);
   $feed_id          = wp_filter_nohtml_kses($row['feed_id']);
   $import_items     = wp_filter_nohtml_kses($row['import_items']);
   $import_count     = 0;
