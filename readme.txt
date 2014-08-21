@@ -3,8 +3,8 @@ Contributors: shambhu patnaik
 Donate link: http://socialcms.wordpress.com/
 Tags: juju job importer,juju rss,import juju,juju,autoblogging,job board,auto job import,juju api,juju importer,job-search-engine,affiliate
 Requires at least: 2.9
-Tested up to: 3.9
-Stable tag: 1.1
+Tested up to: 3.9.2
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,9 @@ More detail : http://socialcms.wordpress.com/
 
 
 == Changelog ==
+
+= 1.2 =
+* Fix WPMU cron error
 
 = 1.1 =
 * Add html tag support in Display Template

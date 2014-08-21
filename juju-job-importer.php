@@ -3,7 +3,7 @@
 Plugin Name: Juju Job Importer
 Plugin URI: http://wordpress.org/plugins/juju-job-importer/
 Description: Juju Job Importer Plugin Import job from juju according to your given parameter.Post in relevant category,makes auto blogging
-Version: 1.1
+Version: 1.2
 Author: Shambhu Prasad Patnaik
 Author URI:http://socialcms.wordpress.com/
 */
@@ -14,7 +14,7 @@ if (!function_exists('juju_job_importer_add_menus')) :
 function juju_job_importer_add_menus()
 {
  add_menu_page('Juju Importer', 'Juju Importer', 8, __FILE__, 'juju_job_importer_list');
- add_submenu_page(__FILE__, 'Add Imporder', 'Add Imporder', 8, 'juju_job_importer','juju_job_importer');
+ add_submenu_page(__FILE__, 'Add Imporder', 'Add Importer', 8, 'juju_job_importer','juju_job_importer');
  add_submenu_page(__FILE__, 'Help', 'Help', 8, 'juju_job_importer_help','juju_job_importer_help');
 }
 endif;
@@ -106,6 +106,7 @@ function juju_job_importer_list()
 		 <li><a href="http://socialcms.wordpress.com/2014/01/21/careerbuilder-job-importer/" target="_blank">CareerBuilder Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/2014/02/07/careerjet-job-importer/" target="_blank">CareerJet Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/2014/03/05/simplyhired-job-importer/" target="_blank">SimplyHired Job Importer</a></li>
+		 <li><a href="http://socialcms.wordpress.com/2014/07/02/authenticjobs-job-importer/" target="_blank">AuthenticJobs Job Importer</a></li>
 		 <li><a href="http://socialcms.wordpress.com/category/job-board-2/" target="_blank">Job Board</a></li>
 		<ul>
 	</div>
