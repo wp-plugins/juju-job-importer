@@ -3,7 +3,7 @@ Contributors: shambhu patnaik
 Donate link: http://socialcms.wordpress.com/
 Tags: juju job importer,juju rss,import juju,juju,autoblogging,job board,auto job import,juju api,juju importer,job-search-engine,affiliate
 Requires at least: 2.9
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
